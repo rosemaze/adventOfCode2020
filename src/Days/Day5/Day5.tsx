@@ -1,15 +1,13 @@
 import React from "react";
 import { useReadData } from "../../hooks/useReadData";
-import { DayHeader } from "../../styles/DayHeader.style";
 import { getBoardingPasses } from "./helpers/getBoardingPasses";
 import { getBinarySearchedSpace } from "./helpers/getBinarySearchedSpace";
 import { getSeatID } from "./helpers/getSeatID";
+import { Day } from "../../components/Day/Day";
 
 export const Day5 = () => {
   const [boardingPasses, setBoardingPasses] = React.useState<string[]>([]);
   const [seatIDs, setSeatIDs] = React.useState<number[]>([]);
-  const [result1, setResult1] = React.useState("");
-  const [result2, setResult2] = React.useState("");
 
   const { data } = useReadData("data/Day5/puzzleInput1.txt");
 
@@ -19,8 +17,7 @@ export const Day5 = () => {
 
   const getResult1 = React.useCallback(() => {
     if (boardingPasses.length === 0) {
-      setResult1(`No data`);
-      return;
+      return "Error: no data";
     }
 
     const allSeatIDs = boardingPasses.map((boardingPass) => {
@@ -43,43 +40,32 @@ export const Day5 = () => {
       return getSeatID({ row, column, columnSize: 8 });
     });
 
-    console.log({ allSeatIDs });
-
+    // Set this for getResult2
+    allSeatIDs.sort();
     setSeatIDs(allSeatIDs);
 
-    setResult1(`The highest seat number: ${Math.max(...seatIDs)}`);
+    return `The highest seat number: ${allSeatIDs[allSeatIDs.length - 1]}`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boardingPasses.length, boardingPasses]);
 
   const getResult2 = React.useCallback(() => {
     if (seatIDs.length === 0) {
-      setResult2(`Please get Result 1 first`);
-      return;
+      return "Error: Please get Result 1 first";
     }
 
     let found = false;
     let currentSeat = 0;
-    const sortedSeatIDs = [...seatIDs];
-    sortedSeatIDs.sort();
-    for (let i: number = 1; i <= sortedSeatIDs.length && !found; i++) {
-      const precedingSeat = sortedSeatIDs[i - 1];
-      currentSeat = sortedSeatIDs[i];
-      console.log({ precedingSeat, currentSeat });
+    for (let i: number = 1; i <= seatIDs.length && !found; i++) {
+      const precedingSeat = seatIDs[i - 1];
+
+      currentSeat = seatIDs[i];
 
       found = precedingSeat === currentSeat - 2;
     }
 
-    setResult2(`Seat number preceeded by -1 and +1: ${currentSeat - 1}`);
+    return `Seat number preceeded by -1 and +1: ${currentSeat - 1}`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seatIDs.length, seatIDs]);
 
-  return (
-    <>
-      <DayHeader>Day 5</DayHeader>
-      <input type="button" value="Get result 1" onClick={getResult1} />
-      <div>{result1}</div>
-      <input type="button" value="Get result 2" onClick={getResult2} />
-      <div>{result2}</div>
-    </>
-  );
+  return <Day dayNumber={5} getResult1={getResult1} getResult2={getResult2} />;
 };

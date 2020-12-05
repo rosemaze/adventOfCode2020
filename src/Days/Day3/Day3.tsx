@@ -1,13 +1,12 @@
 import React from "react";
 import { useReadData } from "../../hooks/useReadData";
-import { DayHeader } from "../../styles/DayHeader.style";
+import { DayHeader } from "../../components/Day/styles/DayHeader.style";
 import { getGridMap } from "./helpers/getGridMap";
 import { getTreeCount } from "./helpers/getTreeCount";
+import { Day } from "../../components/Day/Day";
 
 export const Day3 = () => {
   const [gridMap, setGridMap] = React.useState<string[][]>([]);
-  const [result1, setResult1] = React.useState("");
-  const [result2, setResult2] = React.useState("");
 
   const { data } = useReadData("data/Day3/puzzleInput1.txt");
 
@@ -17,21 +16,19 @@ export const Day3 = () => {
 
   const getResult1 = React.useCallback(() => {
     if (gridMap.length === 0) {
-      return;
+      return "Error: no data";
     }
 
-    setResult1(
-      `The number of encountered trees: ${getTreeCount({
-        gridMap,
-        xIncrement: 3,
-        yIncrement: 1,
-      })}`
-    );
+    return `The number of encountered trees: ${getTreeCount({
+      gridMap,
+      xIncrement: 3,
+      yIncrement: 1,
+    })}`;
   }, [gridMap]);
 
   const getResult2 = React.useCallback(() => {
     if (gridMap.length === 0) {
-      return;
+      return "Error: no data";
     }
 
     const r1d1 = getTreeCount({
@@ -60,20 +57,10 @@ export const Day3 = () => {
       yIncrement: 2,
     });
 
-    setResult2(
-      `The number of encountered trees: ${r1d1} x ${r3d1} x ${r5d1} x ${r7d1} x ${r1d2} = ${
-        r1d1 * r3d1 * r5d1 * r7d1 * r1d2
-      }`
-    );
+    return `The number of encountered trees: ${r1d1} x ${r3d1} x ${r5d1} x ${r7d1} x ${r1d2} = ${
+      r1d1 * r3d1 * r5d1 * r7d1 * r1d2
+    }`;
   }, [gridMap]);
 
-  return (
-    <>
-      <DayHeader>Day 3</DayHeader>
-      <input type="button" value="Get result 1" onClick={getResult1} />
-      <div>{result1}</div>
-      <input type="button" value="Get result 2" onClick={getResult2} />
-      <div>{result2}</div>
-    </>
-  );
+  return <Day dayNumber={1} getResult1={getResult1} getResult2={getResult2} />;
 };

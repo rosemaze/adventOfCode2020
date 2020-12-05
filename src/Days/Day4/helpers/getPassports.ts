@@ -1,4 +1,4 @@
-import { addField } from "./addField";
+import { getField } from "./getField";
 
 export enum FieldName {
   BirthYear = "byr",
@@ -38,7 +38,7 @@ export const getPassports = (data: string) => {
       const fieldName = field.split(":")[0] as FieldName;
       const fieldValue = field.split(":")[1];
 
-      passport = addField({ fieldName, fieldValue, passport });
+      passport = { ...passport, ...getField({ fieldName, fieldValue }) };
     });
   });
 

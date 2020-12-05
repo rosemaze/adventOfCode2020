@@ -7,13 +7,11 @@ export const getBinarySearchedSpace = (options: {
 }): number => {
   const { characters, space, floor, upperCharacter, lowerCharacter } = options;
 
-  const currentCharacter = characters.charAt(0);
-
-  // console.log({ options, currentCharacter });
-
   if (characters.length === 0) {
     return floor;
   }
+
+  const currentCharacter = characters.charAt(0);
 
   const currentSpace = space / 2;
 

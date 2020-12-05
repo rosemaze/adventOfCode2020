@@ -1,17 +1,15 @@
 import React from "react";
 import { useReadData } from "../../hooks/useReadData";
-import { DayHeader } from "../../styles/DayHeader.style";
 import {
   getPolicyAndPasswords,
   PolicyAndPasswords,
 } from "./helpers/getPolicyAndPasswords";
+import { Day } from "../../components/Day/Day";
 
 export const Day2 = () => {
   const [policyAndPasswords, setPolicyAndPasswords] = React.useState<
     PolicyAndPasswords[]
   >();
-  const [result1, setResult1] = React.useState("");
-  const [result2, setResult2] = React.useState("");
 
   const { data } = useReadData("data/Day2/puzzleInput1.txt");
 
@@ -21,7 +19,7 @@ export const Day2 = () => {
 
   const getResult1 = React.useCallback(() => {
     if (!policyAndPasswords) {
-      return;
+      return "Error: no data";
     }
 
     const validPasswords = policyAndPasswords.filter((policyAndPassword) => {
@@ -37,12 +35,12 @@ export const Day2 = () => {
       return occurrences >= min && occurrences <= max;
     });
 
-    setResult1(`The number of valid passwords: ${validPasswords.length}`);
+    return `The number of valid passwords: ${validPasswords.length}`;
   }, [policyAndPasswords]);
 
   const getResult2 = React.useCallback(() => {
     if (!policyAndPasswords) {
-      return;
+      return "Error: no data!";
     }
 
     const validPasswords = policyAndPasswords.filter((policyAndPassword) => {
@@ -62,16 +60,12 @@ export const Day2 = () => {
       );
     });
 
-    setResult2(`The number of valid passwords: ${validPasswords.length}`);
+    return `The number of valid passwords: ${validPasswords.length}`;
   }, [policyAndPasswords]);
 
   return (
     <>
-      <DayHeader>Day 2</DayHeader>
-      <input type="button" value="Get result 1" onClick={getResult1} />
-      <div>{result1}</div>
-      <input type="button" value="Get result 2" onClick={getResult2} />
-      <div>{result2}</div>
+      <Day dayNumber={2} getResult1={getResult1} getResult2={getResult2} />
     </>
   );
 };
