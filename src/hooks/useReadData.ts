@@ -7,7 +7,6 @@ export const useReadData = (path: string) => {
     const fetchData = async () => {
       const result = await fetch(path).then((r) => r.text());
 
-      console.log({ result });
       setData(result.toString());
     };
 

@@ -5,7 +5,7 @@ import { getGridMap } from "./helpers/getGridMap";
 import { getTreeCount } from "./helpers/getTreeCount";
 
 export const Day3 = () => {
-  const [gridMap, setGridMap] = React.useState<string[][]>(new Array(Array()));
+  const [gridMap, setGridMap] = React.useState<string[][]>([]);
   const [result1, setResult1] = React.useState("");
   const [result2, setResult2] = React.useState("");
 
