@@ -1,11 +1,4 @@
-export interface PolicyAndPasswords {
-  policy: {
-    min: number;
-    max: number;
-    requiredCharacter: string;
-  };
-  password: string;
-}
+import { PolicyAndPasswords } from "../Day2.types";
 
 export const getPolicyAndPasswords = (data: string): PolicyAndPasswords[] => {
   return data.split("\n").map((line) => {

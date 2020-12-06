@@ -1,4 +1,4 @@
-import { FieldName, Passport } from "./getPassports";
+import { FieldName, Passport } from "../Day4.types";
 import { throwUnreachableCase } from "../../../helpers/throwUnreachableCase";
 
 export const getField = (options: {

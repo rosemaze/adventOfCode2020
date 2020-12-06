@@ -1,36 +1,18 @@
 import React from "react";
-import { useReadData } from "../../hooks/useReadData";
-import { DayHeader } from "../../components/Day/styles/DayHeader.style";
 import { getGridMap } from "./helpers/getGridMap";
 import { getTreeCount } from "./helpers/getTreeCount";
-import { Day } from "../../components/Day/Day";
+import { GenericDay } from "../../components/GenericDay/GenericDay";
 
 export const Day3 = () => {
-  const [gridMap, setGridMap] = React.useState<string[][]>([]);
-
-  const { data } = useReadData("data/Day3/puzzleInput1.txt");
-
-  React.useEffect(() => {
-    setGridMap(getGridMap(data));
-  }, [data]);
-
-  const getResult1 = React.useCallback(() => {
-    if (gridMap.length === 0) {
-      return "Error: no data";
-    }
-
+  const getResult1 = (gridMap: string[][]) => {
     return `The number of encountered trees: ${getTreeCount({
       gridMap,
       xIncrement: 3,
       yIncrement: 1,
     })}`;
-  }, [gridMap]);
+  };
 
-  const getResult2 = React.useCallback(() => {
-    if (gridMap.length === 0) {
-      return "Error: no data";
-    }
-
+  const getResult2 = (gridMap: string[][]) => {
     const r1d1 = getTreeCount({
       gridMap,
       xIncrement: 1,
@@ -60,7 +42,15 @@ export const Day3 = () => {
     return `The number of encountered trees: ${r1d1} x ${r3d1} x ${r5d1} x ${r7d1} x ${r1d2} = ${
       r1d1 * r3d1 * r5d1 * r7d1 * r1d2
     }`;
-  }, [gridMap]);
+  };
 
-  return <Day dayNumber={1} getResult1={getResult1} getResult2={getResult2} />;
+  return (
+    <GenericDay
+      dayNumber={3}
+      getResult1={getResult1}
+      getResult2={getResult2}
+      getProcessedData={getGridMap}
+      filePath="data/Day3/puzzleInput1.txt"
+    />
+  );
 };

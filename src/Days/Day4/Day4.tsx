@@ -1,45 +1,38 @@
 import React from "react";
 import { useReadData } from "../../hooks/useReadData";
-import { getPassports, Passport } from "./helpers/getPassports";
+import { getPassports } from "./helpers/getPassports";
 import { isValidPassport } from "./helpers/isValidPassport";
 import { hasValidPassportFields } from "./helpers/hasValidPassportFields";
-import { Day } from "../../components/Day/Day";
+import { GenericDay } from "../../components/GenericDay/GenericDay";
+import { Passport } from "./Day4.types";
 
 export const Day4 = () => {
-  const [passports, setPassports] = React.useState<Passport[]>([]);
-
   const { data } = useReadData("data/Day4/puzzleInput1.txt");
 
-  React.useEffect(() => {
-    setPassports(getPassports(data));
-  }, [data]);
-
-  const getResult1 = React.useCallback(() => {
-    if (passports.length === 0) {
-      return "Error: no data";
-    }
-
+  const getResult1 = (passports: Passport[]) => {
     const validPassports = passports.filter((passport) =>
       isValidPassport(passport)
     );
 
     return `The number of valid passports: ${validPassports.length}`;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [passports.length, passports]);
+  };
 
-  const getResult2 = React.useCallback(() => {
-    if (passports.length === 0) {
-      return "Error: no data";
-    }
-
+  const getResult2 = (passports: Passport[]) => {
     const validPassports = passports.filter(
       (passport) =>
         isValidPassport(passport) && hasValidPassportFields(passport)
     );
 
     return `The number of valid passports: ${validPassports.length}`;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [passports.length]);
+  };
 
-  return <Day dayNumber={4} getResult1={getResult1} getResult2={getResult2} />;
+  return (
+    <GenericDay
+      dayNumber={4}
+      getResult1={getResult1}
+      getResult2={getResult2}
+      getProcessedData={getPassports}
+      filePath="data/Day4/puzzleInput1.txt"
+    />
+  );
 };

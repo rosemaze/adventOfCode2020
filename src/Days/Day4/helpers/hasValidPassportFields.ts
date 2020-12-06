@@ -1,4 +1,4 @@
-import { Passport } from "./getPassports";
+import { Passport } from "../Day4.types";
 import { isValidBirthYear } from "./isValidBirthYear";
 import { isValidIssueYear } from "./isValidIssueYear";
 import { isValidExpirationYear } from "./isValidExpirationYear";

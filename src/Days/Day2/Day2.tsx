@@ -1,27 +1,10 @@
 import React from "react";
-import { useReadData } from "../../hooks/useReadData";
-import {
-  getPolicyAndPasswords,
-  PolicyAndPasswords,
-} from "./helpers/getPolicyAndPasswords";
-import { Day } from "../../components/Day/Day";
+import { getPolicyAndPasswords } from "./helpers/getPolicyAndPasswords";
+import { PolicyAndPasswords } from "./Day2.types";
+import { GenericDay } from "../../components/GenericDay/GenericDay";
 
 export const Day2 = () => {
-  const [policyAndPasswords, setPolicyAndPasswords] = React.useState<
-    PolicyAndPasswords[]
-  >();
-
-  const { data } = useReadData("data/Day2/puzzleInput1.txt");
-
-  React.useEffect(() => {
-    setPolicyAndPasswords(getPolicyAndPasswords(data));
-  }, [data]);
-
-  const getResult1 = React.useCallback(() => {
-    if (!policyAndPasswords) {
-      return "Error: no data";
-    }
-
+  const getResult1 = (policyAndPasswords: PolicyAndPasswords[]) => {
     const validPasswords = policyAndPasswords.filter((policyAndPassword) => {
       const {
         policy: { min, max, requiredCharacter },
@@ -36,13 +19,9 @@ export const Day2 = () => {
     });
 
     return `The number of valid passwords: ${validPasswords.length}`;
-  }, [policyAndPasswords]);
+  };
 
-  const getResult2 = React.useCallback(() => {
-    if (!policyAndPasswords) {
-      return "Error: no data!";
-    }
-
+  const getResult2 = (policyAndPasswords: PolicyAndPasswords[]) => {
     const validPasswords = policyAndPasswords.filter((policyAndPassword) => {
       const {
         policy: { min: position1, max: position2, requiredCharacter },
@@ -61,11 +40,17 @@ export const Day2 = () => {
     });
 
     return `The number of valid passwords: ${validPasswords.length}`;
-  }, [policyAndPasswords]);
+  };
 
   return (
     <>
-      <Day dayNumber={2} getResult1={getResult1} getResult2={getResult2} />
+      <GenericDay
+        dayNumber={2}
+        getResult1={getResult1}
+        getResult2={getResult2}
+        getProcessedData={getPolicyAndPasswords}
+        filePath={"data/Day2/puzzleInput1.txt"}
+      />
     </>
   );
 };

@@ -1,9 +1,6 @@
-export interface PairedSums {
-  pairedSums: Array<number>;
-  pairedSumsIndividuals: Array<Array<number>>;
-}
+import { PairedSums } from "../Day1.types";
 
-export const getPairedSums = (numbers: number[]) => {
+export const getPairedSums = (numbers: number[]): PairedSums => {
   const pairedSums = new Array<number>();
   const pairedSumsIndividuals = new Array<Array<number>>();
 

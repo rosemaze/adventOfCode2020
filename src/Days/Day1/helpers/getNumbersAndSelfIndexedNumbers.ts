@@ -1,20 +1,9 @@
-export interface NumbersAndSelfIndexed {
-  numbersIndexedByItself: number[];
-  numbers: number[];
-}
-
-export const getNumbersAndSelfIndexedNumbers = ({
-  data,
-  delimiter,
-}: {
-  data: string;
-  delimiter: string;
-}) => {
+export const getNumbersAndSelfIndexedNumbers = (data: string) => {
   const numbers = new Array<number>();
   const numbersIndexedByItself = new Array<number>();
   let currentNumber = 0;
 
-  data.split(delimiter).forEach((line) => {
+  data.split("\n").forEach((line) => {
     currentNumber = parseInt(line);
 
     if (!isNaN(currentNumber)) {

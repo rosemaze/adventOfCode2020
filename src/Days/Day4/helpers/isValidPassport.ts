@@ -1,4 +1,4 @@
-import { Passport, ValidPassport } from "./getPassports";
+import { Passport, ValidPassport } from "../Day4.types";
 
 export const isValidPassport = (
   passport: Passport | ValidPassport

@@ -1,35 +1,13 @@
 import React from "react";
 import { useReadData } from "../../hooks/useReadData";
-import {
-  getNumbersAndSelfIndexedNumbers,
-  NumbersAndSelfIndexed,
-} from "./helpers/getNumbersAndSelfIndexedNumbers";
+import { getNumbersAndSelfIndexedNumbers } from "./helpers/getNumbersAndSelfIndexedNumbers";
 import { getPairedSums } from "./helpers/getPairedSums";
-import { Day } from "../../components/Day/Day";
+import { GenericDay } from "../../components/GenericDay/GenericDay";
+import { NumbersAndSelfIndexed } from "./Day1.types";
 
 export const Day1 = () => {
-  const [
-    numbersAndSelfIndexed,
-    setNumbersAndSelfIndexed,
-  ] = React.useState<NumbersAndSelfIndexed>();
-
-  const { data } = useReadData("data/Day1/puzzleInput1.txt");
-
-  React.useEffect(() => {
-    setNumbersAndSelfIndexed(
-      getNumbersAndSelfIndexedNumbers({
-        data,
-        delimiter: "\n",
-      })
-    );
-  }, [data]);
-
-  const getResult1 = React.useCallback(() => {
-    if (!numbersAndSelfIndexed) {
-      return "Error: No data";
-    }
-
-    const { numbers, numbersIndexedByItself } = numbersAndSelfIndexed;
+  const getResult1 = (data: NumbersAndSelfIndexed) => {
+    const { numbers, numbersIndexedByItself } = data;
 
     const remainder = numbers.find(
       (num) => !!numbersIndexedByItself[2020 - num]
@@ -42,14 +20,10 @@ export const Day1 = () => {
     return `${remainder} x ${2020 - remainder} = ${
       remainder * (2020 - remainder)
     }`;
-  }, [numbersAndSelfIndexed]);
+  };
 
-  const getResult2 = React.useCallback(() => {
-    if (!numbersAndSelfIndexed) {
-      return "Error: No data";
-    }
-
-    const { numbers, numbersIndexedByItself } = numbersAndSelfIndexed;
+  const getResult2 = (data: NumbersAndSelfIndexed) => {
+    const { numbers, numbersIndexedByItself } = data;
     const { pairedSums, pairedSumsIndividuals } = getPairedSums(numbers);
 
     const foundPairedSum = pairedSums.find(
@@ -67,7 +41,15 @@ export const Day1 = () => {
     return `${pairedSum1} x ${pairedSum2} x ${remainder} = ${
       pairedSum1 * pairedSum2 * remainder
     }`;
-  }, [numbersAndSelfIndexed]);
+  };
 
-  return <Day dayNumber={1} getResult1={getResult1} getResult2={getResult2} />;
+  return (
+    <GenericDay
+      dayNumber={1}
+      getResult1={getResult1}
+      getResult2={getResult2}
+      getProcessedData={getNumbersAndSelfIndexedNumbers}
+      filePath={"data/Day1/puzzleInput1.txt"}
+    />
+  );
 };
