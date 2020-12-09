@@ -1,7 +1,7 @@
 import { Group } from "../Days6.types";
 import { getIntersectionOfAllMembersAnswers } from "./getIntersectionOfAllMembersAnswers";
 
-export const getCollectiveYesAnswersByGroupCount = (groups: Group[]) =>
+export const getIntersectionOfYesAnswersByGroupCount = (groups: Group[]) =>
   groups
     .map((group) => getIntersectionOfAllMembersAnswers(group).length)
     .reduce(

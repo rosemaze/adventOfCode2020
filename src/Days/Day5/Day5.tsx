@@ -1,8 +1,6 @@
 import React from "react";
-import { useReadData } from "../../hooks/useReadData";
 import { getBoardingPasses } from "./helpers/getBoardingPasses";
 import { getSeatIDs } from "./helpers/getSeatIDs";
-import { getSeatID } from "./helpers/getSeatID";
 import { GenericDay } from "../../components/GenericDay/GenericDay";
 
 export const Day5 = () => {

@@ -1,5 +1,4 @@
 import React from "react";
-import { useReadData } from "../../hooks/useReadData";
 import { getPassports } from "./helpers/getPassports";
 import { isValidPassport } from "./helpers/isValidPassport";
 import { hasValidPassportFields } from "./helpers/hasValidPassportFields";
@@ -7,8 +6,6 @@ import { GenericDay } from "../../components/GenericDay/GenericDay";
 import { Passport } from "./Day4.types";
 
 export const Day4 = () => {
-  const { data } = useReadData("data/Day4/puzzleInput1.txt");
-
   const getResult1 = (passports: Passport[]) => {
     const validPassports = passports.filter((passport) =>
       isValidPassport(passport)

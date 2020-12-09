@@ -1,5 +1,4 @@
 import React from "react";
-import { useReadData } from "../../hooks/useReadData";
 import { getNumbersAndSelfIndexedNumbers } from "./helpers/getNumbersAndSelfIndexedNumbers";
 import { getPairedSums } from "./helpers/getPairedSums";
 import { GenericDay } from "../../components/GenericDay/GenericDay";

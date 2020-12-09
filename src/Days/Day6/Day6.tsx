@@ -1,20 +1,19 @@
 import React from "react";
-import { useReadData } from "../../hooks/useReadData";
 import { getGroups } from "./helpers/getGroups";
-import { getYesAnswersByGroupCount } from "./helpers/getYesAnswersByGroupCount";
-import { getCollectiveYesAnswersByGroupCount } from "./helpers/getCollectiveYesAnswersByGroupCount";
+import { getUnionOfYesAnswersByGroupCount } from "./helpers/getUnionOfYesAnswersByGroupCount";
+import { getIntersectionOfYesAnswersByGroupCount } from "./helpers/getIntersectionOfYesAnswersByGroupCount";
 import { GenericDay } from "../../components/GenericDay/GenericDay";
 import { Group } from "./Days6.types";
 
 export const Day6 = () => {
   const getResult1 = (groups: Group[]) => {
-    return `Total number of yes answers by group: ${getYesAnswersByGroupCount(
+    return `Total number of yes answers by group: ${getUnionOfYesAnswersByGroupCount(
       groups
     )}`;
   };
 
   const getResult2 = (groups: Group[]) => {
-    return `Total number of yes answers by group: ${getCollectiveYesAnswersByGroupCount(
+    return `Total number of yes answers by group: ${getIntersectionOfYesAnswersByGroupCount(
       groups
     )}`;
   };

@@ -2,7 +2,7 @@ import { PolicyAndPasswords } from "../Day2.types";
 
 export const getPolicyAndPasswords = (data: string): PolicyAndPasswords[] =>
   data.split("\n").map((line) => {
-    const regex = /([0-9])-([0-9])\s([a-z]):\s([a-z]+)/gi;
+    const regex = /([0-9]+)-([0-9]+)\s([a-z]):\s([a-z]+)/gi;
     const result = regex.exec(line);
 
     let min = 0,

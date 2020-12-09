@@ -4,17 +4,7 @@ import { throwUnreachableCase } from "../../../helpers/throwUnreachableCase";
 export const getField = (options: {
   fieldName: FieldName;
   fieldValue: string;
-}): Pick<
-  Passport,
-  | "birthYear"
-  | "issueYear"
-  | "height"
-  | "expirationYear"
-  | "hairColor"
-  | "eyeColor"
-  | "passportID"
-  | "countryID"
-> => {
+}): Pick<Passport, keyof Passport> => {
   const { fieldName, fieldValue } = options;
 
   switch (fieldName) {

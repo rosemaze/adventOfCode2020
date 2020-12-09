@@ -27,7 +27,7 @@ export function GenericDay<T>(props: Props<T>) {
 
   React.useEffect(() => {
     setProcessedData(getProcessedData(data));
-  }, [data]);
+  }, [data, getProcessedData]);
 
   const handleGetResult1 = React.useCallback(() => {
     if (!processedData) {
