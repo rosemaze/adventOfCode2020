@@ -33,7 +33,7 @@ export const Day5 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getBoardingPasses}
-      filePath="data/Day5/puzzleInput1.txt"
+      filePath="data/Day5/puzzleInput2.txt"
     />
   );
 };

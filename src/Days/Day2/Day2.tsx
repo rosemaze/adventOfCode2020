@@ -49,7 +49,7 @@ export const Day2 = () => {
         getResult1={getResult1}
         getResult2={getResult2}
         getProcessedData={getPolicyAndPasswords}
-        filePath={"data/Day2/puzzleInput1.txt"}
+        filePath={"data/Day2/puzzleInput2.txt"}
       />
     </>
   );

@@ -24,7 +24,7 @@ export const Day6 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getGroups}
-      filePath="data/Day6/puzzleInput1.txt"
+      filePath="data/Day6/puzzleInput2.txt"
     />
   );
 };

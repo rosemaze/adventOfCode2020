@@ -48,7 +48,7 @@ export const Day1 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getNumbersAndSelfIndexedNumbers}
-      filePath={"data/Day1/puzzleInput1.txt"}
+      filePath={"data/Day1/puzzleInput.txt"}
     />
   );
 };

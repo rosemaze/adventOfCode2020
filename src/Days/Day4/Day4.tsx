@@ -29,7 +29,7 @@ export const Day4 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getPassports}
-      filePath="data/Day4/puzzleInput1.txt"
+      filePath="data/Day4/puzzleInput2.txt"
     />
   );
 };

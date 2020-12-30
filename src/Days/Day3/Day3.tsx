@@ -50,7 +50,7 @@ export const Day3 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getGridMap}
-      filePath="data/Day3/puzzleInput1.txt"
+      filePath="data/Day3/puzzleInput2.txt"
     />
   );
 };

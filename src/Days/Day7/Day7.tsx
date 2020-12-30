@@ -39,7 +39,7 @@ export const Day7 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getBagAndRules}
-      filePath="data/Day7/puzzleInput1.txt"
+      filePath="data/Day7/puzzleInput2.txt"
     />
   );
 };

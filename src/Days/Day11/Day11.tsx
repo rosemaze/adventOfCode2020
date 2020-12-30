@@ -31,7 +31,7 @@ export const Day11 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getFirstSeatStates}
-      filePath="data/Day11/puzzleInput1.txt"
+      filePath="data/Day11/puzzleInput.txt"
     />
   );
 };

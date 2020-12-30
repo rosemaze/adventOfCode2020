@@ -46,7 +46,7 @@ export const Day10 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getJoltages}
-      filePath="data/Day10/puzzleInput1.txt"
+      filePath="data/Day10/puzzleInput.txt"
     />
   );
 };

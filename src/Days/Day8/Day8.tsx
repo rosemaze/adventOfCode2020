@@ -25,18 +25,15 @@ export const Day8 = () => {
     const { operationsMarked } = getAccumulatorBeforeFirstRepeatedOperation(
       operations
     );
-    console.log({ operationsMarked });
 
-    const lastOp: Operation = {
-      instruction: Instruction.Jump,
-      steps: 1,
-      index: 627,
-    };
+    const lastOp = operations[operations.length - 1];
 
     const opToSwitch = getPerformedOpToSwitch({
       ops: operationsMarked,
       currentOp: lastOp,
     });
+
+    console.log("switch this op:", opToSwitch);
 
     if (!opToSwitch) {
       return "Could not find operation to fix";
@@ -63,7 +60,7 @@ export const Day8 = () => {
       getResult1={getResult1}
       getResult2={getResult2}
       getProcessedData={getOperations}
-      filePath="data/Day8/puzzleInput1.txt"
+      filePath="data/Day8/puzzleInput2.txt"
     />
   );
 };
