@@ -12,6 +12,10 @@ import { Day10 } from "./Days/Day10/Day10";
 import { Day11 } from "./Days/Day11/Day11";
 import { Day12 } from "./Days/Day12/Day12";
 import { Day13 } from "./Days/Day13/Day13";
+import { Day14 } from "./Days/Day14/Day14";
+import { Day15 } from "./Days/Day15/Day15";
+import { Day16 } from "./Days/Day16/Day16";
+import { Day17 } from "./Days/Day17/Day17";
 import { MainHeader } from "./styles/MainHeader.style";
 
 function App() {
@@ -31,6 +35,10 @@ function App() {
       <Day11 />
       <Day12 />
       <Day13 />
+      <Day14 />
+      <Day15 />
+      <Day16 />
+      <Day17 />
     </>
   );
 }

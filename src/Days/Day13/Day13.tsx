@@ -3,11 +3,9 @@ import { GenericDay } from "../../components/GenericDay/GenericDay";
 import {
   ChineseRemainderMember,
   CurrentTimestampAndBusIntervals,
-  Equation,
 } from "./Day13.types";
 import { getCurrentTimestampAndBusIntervals } from "./helpers/getCurrentTimestampAndBusIntervals";
 import { getEarliestBus } from "./helpers/getEarliestBus.";
-import { getEarliestBusWithSubsequentDepartures } from "./helpers/getEarliestBusWithSubsequentDepartures";
 import { getEquation } from "./helpers/getEquation";
 import { getXWithChineseRemainderTheorem } from "./helpers/getXWithChineseRemainderTheorem";
 
@@ -15,7 +13,6 @@ export const Day13 = () => {
   const getResult1 = (
     currentTimestampAndBusIntervals: CurrentTimestampAndBusIntervals
   ) => {
-    console.log({ currentTimestampAndBusIntervals });
     const earliestBus = getEarliestBus(currentTimestampAndBusIntervals);
 
     if (!earliestBus) {
@@ -74,11 +71,12 @@ export const Day13 = () => {
       .map((member) => member.coprime)
       .reduce((product, coPrime) => product * coPrime, 1);
 
-    const x = getXWithChineseRemainderTheorem(chineseRemainderMembers);
+    const { coprime: sumOfAllProducts } = getXWithChineseRemainderTheorem(
+      chineseRemainderMembers
+    );
 
-    console.log({ productOfAllCoPrimes, x });
     return `The earliest timestamp with consecutive buses: ${Math.abs(
-      x.coprime - productOfAllCoPrimes * 4
+      sumOfAllProducts - productOfAllCoPrimes * 4
     )}`;
   };
 
