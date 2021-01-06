@@ -1,4 +1,4 @@
-import { Memory, ProgramInstruction } from "../Day14.types";
+import { ProgramInstruction } from "../Day14.types";
 import { getValueWithAppliedMask } from "./getValueWithAppliedMask";
 import { isMask } from "./isMask";
 

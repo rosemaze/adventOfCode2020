@@ -17,19 +17,12 @@ export const getContiguousIndices = ({
           if (acc === invalidSum) {
             foundContiguousSum = true;
             contiguousLength = i;
-            console.log(
-              "found contiguous set at index",
-              nextIndex,
-              " for the next numbers from index",
-              (contiguousLength = i)
-            );
           }
 
           arr.splice(1);
         } // eject early by mutating iterated copy
 
         const nextAcc = acc + curr;
-        console.log({ nextAcc });
         return nextAcc;
       }, 0);
 

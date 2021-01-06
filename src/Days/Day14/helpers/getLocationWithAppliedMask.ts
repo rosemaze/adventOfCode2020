@@ -1,6 +1,3 @@
-import { throwUnreachableCase } from "../../../helpers/throwUnreachableCase";
-import { BitMaskValue } from "../Day14.types";
-
 export const getLocationWithAppliedMask = ({
   location,
   mask,

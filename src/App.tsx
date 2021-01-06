@@ -16,6 +16,7 @@ import { Day14 } from "./Days/Day14/Day14";
 import { Day15 } from "./Days/Day15/Day15";
 import { Day16 } from "./Days/Day16/Day16";
 import { Day17 } from "./Days/Day17/Day17";
+import { Day18 } from "./Days/Day18/Day18";
 import { MainHeader } from "./styles/MainHeader.style";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Day15 />
       <Day16 />
       <Day17 />
+      <Day18 />
     </>
   );
 }

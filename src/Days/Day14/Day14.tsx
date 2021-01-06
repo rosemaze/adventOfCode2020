@@ -1,7 +1,6 @@
 import React from "react";
 import { GenericDay } from "../../components/GenericDay/GenericDay";
 import { ProgramInstruction } from "./Day14.types";
-import { getAllPossibleBinaryLocations } from "./helpers/getAllPossibleBinaryLocations";
 import { getInitialisedProgram } from "./helpers/getInitialisedProgram";
 import { getInitialisedProgramV2 } from "./helpers/getInitialisedProgramV2";
 import { getProgram } from "./helpers/getProgram";

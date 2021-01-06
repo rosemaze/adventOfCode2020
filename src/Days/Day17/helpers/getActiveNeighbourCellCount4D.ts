@@ -1,4 +1,4 @@
-import { CellState, Cube, HyperCube } from "../Day17.types";
+import { CellState, HyperCube } from "../Day17.types";
 
 export const getActiveNeighbourCellCount4D = ({
   w,

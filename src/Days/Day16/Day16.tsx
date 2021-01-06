@@ -1,5 +1,4 @@
 import React from "react";
-import { DEFAULT_MIN_VERSION } from "tls";
 import { GenericDay } from "../../components/GenericDay/GenericDay";
 import { TicketsAndRanges } from "./Day16.types";
 import { getTicketsAndRanges } from "./helpers/getTicketsAndRanges";

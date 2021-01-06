@@ -1,5 +1,5 @@
 import { throwUnreachableCase } from "../../../helpers/throwUnreachableCase";
-import { Instruction, Action, Ship, Waypoint, Direction } from "../Day12.types";
+import { Instruction, Action, Ship, Waypoint } from "../Day12.types";
 import { getNewDirection } from "./getNewDirection";
 import { getNewPosition } from "./getNewPosition";
 import { mapDirectionToAction } from "./mapDirectionToAction";
