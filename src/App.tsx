@@ -17,11 +17,18 @@ import { Day15 } from "./Days/Day15/Day15";
 import { Day16 } from "./Days/Day16/Day16";
 import { Day17 } from "./Days/Day17/Day17";
 import { Day18 } from "./Days/Day18/Day18";
+import { Day1 as Day1of22 } from "./Days2022/Day1/Day1";
+import { Day2 as Day2of22 } from "./Days2022/Day2/Day2";
+import { Day3 as Day3of22 } from "./Days2022/Day3/Day3";
 import { MainHeader } from "./styles/MainHeader.style";
 
 function App() {
   return (
     <>
+      <MainHeader>Advent of Code 2022</MainHeader>
+      <Day1of22 />
+      <Day2of22 />
+      <Day3of22 />
       <MainHeader>Advent of Code 2020</MainHeader>
       <Day1 />
       <Day2 />

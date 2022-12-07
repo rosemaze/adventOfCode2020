@@ -12,13 +12,8 @@ interface Props<T> {
 
 // Caution: Pesky linter won't allow component to be defined as React.FC - VSCode won't detect if we don't return jsx
 export function GenericDay<T>(props: Props<T>) {
-  const {
-    getResult1,
-    getResult2,
-    dayNumber,
-    getProcessedData,
-    filePath,
-  } = props;
+  const { getResult1, getResult2, dayNumber, getProcessedData, filePath } =
+    props;
   const [result1, setResult1] = React.useState("");
   const [result2, setResult2] = React.useState("");
   const [processedData, setProcessedData] = React.useState<T>();
@@ -31,7 +26,8 @@ export function GenericDay<T>(props: Props<T>) {
 
   const handleGetResult1 = React.useCallback(() => {
     if (!processedData) {
-      return "Error: No processed data";
+      setResult1("Error: No processed data");
+      return;
     }
 
     setResult1(getResult1(processedData));
@@ -39,6 +35,7 @@ export function GenericDay<T>(props: Props<T>) {
 
   const handleGetResult2 = React.useCallback(() => {
     if (!processedData) {
+      setResult2("Error: No processed data");
       return "Error: No processed data";
     }
 
