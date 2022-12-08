@@ -1,67 +1,12 @@
-const priorityIndex = [
-  "0", // Start from 1
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
+import { PRIORITY_INDEX } from "../Day3.constants";
 
-export const getSumOfPriorityItems = (data: string) => {
+export const getSumOfPriorityItems = (items: string[][]) => {
   let sumOfPriorities = 0;
-  data.split("\n").forEach((line) => {
-    const items = line.split("").map((item) => item);
 
-    const half = Math.ceil(items.length / 2);
-    const items1 = items.slice(0, half);
-    const items2 = items.slice(-half);
+  items.forEach((item) => {
+    const half = Math.ceil(item.length / 2);
+    const items1 = item.slice(0, half);
+    const items2 = item.slice(-half);
 
     let found = false;
     let priorityItem = "";
@@ -75,10 +20,9 @@ export const getSumOfPriorityItems = (data: string) => {
       }
     }
 
-    const test = priorityIndex.findIndex((item) => item === priorityItem);
-    console.log({ priorityItem, test, items });
-
-    sumOfPriorities += priorityIndex.findIndex((item) => item === priorityItem);
+    sumOfPriorities += PRIORITY_INDEX.findIndex(
+      (priority) => priority === priorityItem
+    );
   });
 
   return sumOfPriorities;

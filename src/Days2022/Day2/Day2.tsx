@@ -1,7 +1,7 @@
 import React from "react";
 
 import { GenericDay } from "../../components/GenericDay/GenericDay";
-import { getData } from "./helpers/getData";
+import { getData } from "../../helpers/getData";
 import { getYourTotalScoreBasedOnAction } from "./helpers/getYourTotalScoreBasedOnAction";
 import { getYourTotalScoreBasedOnOutcome } from "./helpers/getYourTotalScoreBasedOnOutcome";
 
