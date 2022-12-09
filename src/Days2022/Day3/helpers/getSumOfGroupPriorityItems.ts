@@ -1,4 +1,3 @@
-import { PairedAssignedRange } from "../../Day4/Day4.types";
 import { PRIORITY_INDEX } from "../Day3.constants";
 
 export const getSumOfGroupPriorityItems = (items: string[][]) => {
