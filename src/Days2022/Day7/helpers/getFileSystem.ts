@@ -27,7 +27,7 @@ const addToDirectory = ({
     const directoryName = entry.split(" ")[1];
 
     if (!directoryToAddTo[directoryName]) {
-      console.log("creating directory", directoryName, "path is", pathAsString);
+      // console.log("creating directory", directoryName, "path is", pathAsString);
       directoryToAddTo[directoryName] = {};
 
       directories.push(pathAsString + "/" + directoryName);
@@ -57,17 +57,12 @@ export const getFileSystem = (data: string) => {
       const directoryName = line.split(" ")[2];
 
       if (directoryName === "..") {
-        console.log("go one level up");
+        // console.log("go one level up");
         // "$ cd .." Navigate back one level
         currentPath.pop();
       } else {
         // "$ cd a" Navigate to directory and create directory
         currentPath.push(directoryName === "/" ? "root" : directoryName);
-        console.log(
-          `pushing ${directoryName} to ${currentPath.join(
-            "/"
-          )} from command ${line}`
-        );
       }
     } else if (line.startsWith("$ ls")) {
       // List all contents do nothing
@@ -80,8 +75,6 @@ export const getFileSystem = (data: string) => {
       });
     }
   });
-
-  console.log({ directories });
 
   return {
     fileSystem,

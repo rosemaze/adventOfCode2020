@@ -1,20 +1,24 @@
 import { Directory } from "../Day7.types";
 
-export const getRecursiveDirectories = (
-  directory: Directory | null,
-  foundDirectories: string[]
-): string[] => {
-  const parentPath = foundDirectories[0] ?? "";
-
+export const getRecursiveDirectories = ({
+  name,
+  directory,
+  foundDirectories,
+}: {
+  name: string;
+  directory: Directory | null;
+  foundDirectories: string[];
+}): string[] => {
   for (var key in directory) {
-    foundDirectories.push(parentPath + "/" + key);
+    foundDirectories.push(name === "" ? key : name + "/" + key);
   }
 
   for (var keyNext in directory) {
-    const nextDirectories = getRecursiveDirectories(
-      directory[keyNext],
-      foundDirectories
-    );
+    const nextDirectories = getRecursiveDirectories({
+      name: name === "" ? keyNext : name + "/" + keyNext,
+      directory: directory[keyNext],
+      foundDirectories,
+    });
 
     foundDirectories.concat(nextDirectories);
   }

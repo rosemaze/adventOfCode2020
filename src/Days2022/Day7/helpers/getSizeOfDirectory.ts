@@ -2,18 +2,29 @@ import { Directory, FilesAtEachDirectory } from "../Day7.types";
 import { getDirectory } from "./getDirectory";
 import { getRecursiveDirectories } from "./getRecursiveDirectories";
 
-export const getSizeOfDirectory = (
-  name: string,
-  fileSystem: Directory,
-  files: FilesAtEachDirectory
-) => {
-  const directory = getDirectory(name.split("/"), fileSystem);
+export const getSizeOfDirectory = ({
+  name,
+  fileSystem,
+  files,
+}: {
+  name: string;
+  fileSystem: Directory;
+  files: FilesAtEachDirectory;
+}) => {
+  const childDirectories = getRecursiveDirectories({
+    name,
+    directory: getDirectory(name.split("/"), fileSystem),
+    foundDirectories: [],
+  });
 
-  const childDirectories = getRecursiveDirectories(directory, [name]);
+  const filesAtDirectory = [...(files[name] ?? [])].reduce(
+    (acc, cur) => (acc += cur.size),
+    0
+  );
 
-  return {
-    directoryName: name,
-    size: childDirectories.reduce(
+  const size =
+    filesAtDirectory +
+    childDirectories.reduce(
       (accDirectories, curChildDirectory) =>
         (accDirectories += files[curChildDirectory]
           ? files[curChildDirectory].reduce(
@@ -22,6 +33,10 @@ export const getSizeOfDirectory = (
             )
           : 0),
       0
-    ),
+    );
+
+  return {
+    directoryName: name,
+    size,
   };
 };
