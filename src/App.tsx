@@ -24,6 +24,8 @@ import { Day4 as Day4of22 } from "./Days2022/Day4/Day4";
 import { Day5 as Day5of22 } from "./Days2022/Day5/Day5";
 import { Day6 as Day6of22 } from "./Days2022/Day6/Day6";
 import { Day7 as Day7of22 } from "./Days2022/Day7/Day7";
+import { Day8 as Day8of22 } from "./Days2022/Day8/Day8";
+import { Day9 as Day9of22 } from "./Days2022/Day9/Day9";
 import { MainHeader } from "./styles/MainHeader.style";
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
       <Day5of22 />
       <Day6of22 />
       <Day7of22 />
+      <Day8of22 />
+      <Day9of22 />
       <MainHeader>Advent of Code 2020</MainHeader>
       <Day1 />
       <Day2 />
