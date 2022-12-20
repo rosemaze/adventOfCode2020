@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { GenericDay } from "../../components/GenericDay/GenericDay";
 import { Operation, OperationType } from "./Day10.types";
 import { getCRTRow } from "./helpers/getCRTRow";
