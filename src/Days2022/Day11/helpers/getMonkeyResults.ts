@@ -53,5 +53,8 @@ export const getMonkeyResults = ({
     });
   }
 
-  return { monkeyItems, monkeyInspections };
+  return {
+    monkeyItems,
+    monkeyInspections: monkeyInspections.sort((a, b) => b - a),
+  };
 };

@@ -1,4 +1,4 @@
-export interface MonkeyAction extends TestProps {
+export interface MonkeyAction extends MonkeyTestProps {
   id: number;
   itemsToInspect?: number[];
   test?: (props: {
@@ -8,7 +8,7 @@ export interface MonkeyAction extends TestProps {
   }) => resultMonkeyAndReceivedItem;
 }
 
-export interface TestProps {
+export interface MonkeyTestProps {
   operator?: Operator;
   element?: number;
   divider?: number;
